@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.book-img {
+    margin-bottom: 26px;
+}
