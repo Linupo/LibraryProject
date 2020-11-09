@@ -14,7 +14,7 @@ namespace LibraryProject.Controllers
         static AuthorModel balys_sruoga = new AuthorModel { Name = "Balys", Surname = "Sruoga" };
         static AuthorModel dzeromas = new AuthorModel { Name = "Jerome", Surname = "Salinger" };
 
-        static BookModel book1 = new BookModel
+        public static BookModel book1 = new BookModel
         {
             Author = putinas,
             Title = "Altorių šešėly",
@@ -22,7 +22,7 @@ namespace LibraryProject.Controllers
             Description = "Tai buvo pirmasis tokio pobūdžio kūrinys lietuvių literatūroje. Jame aprašomas Liudo Vasario – jauno kunigo - gyvenimas, jausmai, vidiniai konfliktai, siekis išsivaduoti iš visuomenės primestų dogmų. Kūrinyje sprendžiama labai daug psichologinių problemų: kunigystės, gyvenimo kelio ieškojimo, menininko asmenybės laisvės. Ypač ryškus romano motyvas – ar gali tas pats žmogus būti ir kunigas, ir poetas?",
             ISBN = "9789955081456"
         };
-        static BookModel book2 = new BookModel
+        public static BookModel book2 = new BookModel
         {
             Author = antanas_skema,
             Title = "Balta drobulė",
@@ -30,7 +30,7 @@ namespace LibraryProject.Controllers
             Description = "Antanas Garšva dirba liftininku viename didžiausių Niujorko viešbučių. Jį slegia uniforma, bukinantis darbas, vienatvė, kamuoja egzistenciniai klausimai, kūrybinės kančios ir, regis, jis tuoj, tuoj išprotės.",
             ISBN = "9789986026976"
         };
-        static BookModel book3 = new BookModel
+        public static BookModel book3 = new BookModel
         {
             Author = balys_sruoga,
             Title = "Dievų miškas",

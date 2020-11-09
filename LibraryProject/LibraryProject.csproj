@@ -128,8 +128,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\ComputerController.cs" />
+    <Compile Include="Controllers\ComputersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\PublisherController.cs" />
     <Compile Include="Global.asax.cs">
@@ -137,6 +140,8 @@
     </Compile>
     <Compile Include="Models\AuthorModel.cs" />
     <Compile Include="Models\BookModel.cs" />
+    <Compile Include="Models\OfferModel.cs" />
+    <Compile Include="Models\PublisherModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +186,10 @@
     <Content Include="Views\Computer\Index.cshtml" />
     <Content Include="Views\Publisher\Index.cshtml" />
     <Content Include="Views\Book\NewBookForm.cshtml" />
+    <Content Include="Views\Offer\Details.cshtml" />
+    <Content Include="Views\Offer\Index.cshtml" />
+    <Content Include="Views\Computers\Index.cshtml" />
+    <Content Include="Views\Books\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

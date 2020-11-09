@@ -1,0 +1,64 @@
+﻿@model LibraryProject.Models.OfferModel
+
+@{
+    ViewBag.Title = "Pasiūlymas";
+}
+
+<h2>Pasiūlymas</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Leidėjas
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Publisher.Title)
+        </dd>
+
+        <dt>
+            Adresas
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Publisher.Address)
+        </dd>
+
+        <dt>
+            Kaina
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            Autorius
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book.Author.Name)  @Html.DisplayFor(model => model.Book.Author.Surname)
+        </dd>
+
+        <dt>
+            Pavadiniams
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book.Title)
+        </dd>
+
+        <dt>
+            Aprašymas
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book.Description)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Redaguoti", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Grįžti į sąrašą", "Index")
+</p>
