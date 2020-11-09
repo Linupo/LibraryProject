@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "NewBookForm";
+}
+
+<h2>Pridėti naują knygą</h2>
+<div class="form-group">
+    <label for="name">Knygos pavadinimas</label>
+    <input type="text" class="form-control" id="name" placeholder="Įveskite knygos pavadinimą">
+</div>
+<div class="form-group">
+    <label for="genre">Knygos žanras</label>
+    <input type="text" class="form-control" id="genre" placeholder="Įveskite knygos žanrą">
+</div>
+<div class="form-group">
+    <label for="year">Knygos parašymo metai</label>
+    <input type="number" class="form-control" id="year" placeholder="Įveskite knygos parašymo metus">
+</div>
+<div class="form-group">
+    <label for="language">Knygos Kalba</label>
+    <input type="text" class="form-control" id="language" placeholder="Įveskite knygos kalbą">
+</div>
+<div class="form-group">
+    <label for="ISBN">Knygos ISBN kodas</label>
+    <input type="text" class="form-control" id="ISBN" placeholder="Įveskite knygos ISBN kodą">
+</div>
+<p><a class="btn btn-primary" href="@Url.Action("Index", "Book")">Pridėti knygą</a></p>

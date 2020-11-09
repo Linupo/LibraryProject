@@ -64,5 +64,11 @@ namespace LibraryProject.Controllers
         {
             return View(book1);
         }
+
+        public ActionResult NewBookForm()
+        {
+            return View();
+        }
+        
     }
 }
