@@ -1,11 +1,29 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Pagrindinis puslapis";
 }
 
-<div class="jumbotron">
-    <h1>Bibliotekos pagrindinis puslapis</h1>
-</div>
+<h1>Pagrindinis bibliotekos puslapis</h1>
 
 <div class="row">
-
+    <div class="col-md-4">
+        <h2>Knygos</h2>
+        <p>
+            Peržiūrėkite bibliotekos turimas knygas ar atlikite knygų rezervaciją internetu. <br />
+            Knygų administravimas (darbuotojams).
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Book")">Knygų sąrašas &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Kompiuteriai</h2>
+        <p>
+            Užsirezervuokite kompiuterį bibliotekoje.<br />
+            Kompiuterių administravimas (darbuotojams).
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Computer")">Kompiuterių sąrašas &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Leidyklų pasiūlymai</h2>
+        <p>Peržiūrėkite leidyklų siūlomas knygas, patvirtinkite ar atšaukite užsakymus (darbuotojams).</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Publisher")">Pasiūlymų sąrašas &raquo;</a></p>
+    </div>
 </div>

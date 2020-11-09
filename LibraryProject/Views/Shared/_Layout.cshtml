@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Biblioteka</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -19,17 +19,21 @@
                 @Html.ActionLink("Biblioteka", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Pagrindinis", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Knygų sąrašas", "Index", "Books")</li>
-                    <li>@Html.ActionLink("Kompiuterių sąrašas", "Index", "Computers")</li>
+                <ul class="nav navbar-nav navbar-left">
+                    <li>@Html.ActionLink("Knygos", "Index", "Book")</li>
+                    <li>@Html.ActionLink("Kompiuteriai", "Index", "Computer")</li>
+                    <li>@Html.ActionLink("Pasiūlymai", "Index", "Publisher")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Prisijungti", "Login", "Auth")</li>
+                    <li>@Html.ActionLink("Registruotis", "Register", "Auth")</li>
+                    <li>@Html.ActionLink("Profilis", "Index", "Profile")</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
     </div>
 
     @Scripts.Render("~/bundles/jquery")

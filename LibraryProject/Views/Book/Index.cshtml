@@ -1,0 +1,28 @@
+﻿@model IEnumerable<LibraryProject.Models.BookModel>
+
+@{
+    ViewBag.Title = "Knygų sąrašas";
+}
+
+<h2>Knygų sąrašas</h2>
+
+<table class="table table-hover">
+    <tr>
+        <th>Autorius</th>
+        <th>Pavadinimas</th>
+        <th>Išleidimo metai</th>
+        <th>Aprašymas</th>
+    </tr>
+
+@foreach (var book in Model)
+{
+    var authorName = String.Format("{0} {1}", book.Author.Name, book.Author.Surname);
+
+    <tr onclick="location.href = '@Url.Action("Details", new { id = book.ISBN })'">
+        <td>@Html.DisplayFor(modelItem => authorName)</td>
+        <td>@Html.DisplayFor(modelItem => book.Title)</td>
+        <td>@Html.DisplayFor(modelItem => book.YearWritten)</td>
+        <td>@Html.DisplayFor(modelItem => book.Description)</td>
+    </tr>
+}
+</table>
