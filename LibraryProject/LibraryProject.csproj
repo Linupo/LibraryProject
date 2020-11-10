@@ -127,7 +127,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\WorkerController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\WorkersController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\ComputerController.cs" />
     <Compile Include="Controllers\ComputersController.cs" />
@@ -138,7 +140,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\TemplateModel.cs" />
     <Compile Include="Models\AuthorModel.cs" />
+    <Compile Include="Models\WorkerModel.cs" />
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\OfferModel.cs" />
     <Compile Include="Models\PublisherModel.cs" />
@@ -190,6 +194,10 @@
     <Content Include="Views\Offer\Index.cshtml" />
     <Content Include="Views\Computers\Index.cshtml" />
     <Content Include="Views\Books\Index.cshtml" />
+    <Content Include="Views\Worker\Index.cshtml" />
+    <Content Include="Views\Worker\NewWorkerForm.cshtml" />
+    <Content Include="Views\Worker\Details.cshtml" />
+    <Content Include="Views\Workers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
