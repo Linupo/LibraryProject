@@ -1,5 +1,56 @@
-﻿@{
-    ViewBag.Title = "Kompiuteriai";
+﻿@model IEnumerable<LibraryProject.Models.ComputerModel>
+
+@{
+    ViewBag.Title = "Kompiuterių sąrašas";
 }
 
 <h2>Kompiuterių sąrašas</h2>
+
+<p>
+    @Html.ActionLink("Naujas kompiuteris", "Add", "Computer")
+</p>
+<table class="table table-striped datatable">
+    <thead>
+        <tr style="background-color: lightblue">
+            <th>
+                @Html.DisplayNameFor(model => model.kodas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vaizdo_plokste)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.procesorius)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.monitorius)
+            </th>
+            <th style="width: 18%"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @for (int i = 0; i < 10; i++)
+        {
+            <tr>
+                <td>
+                    test
+                </td>
+                <td>
+                    test
+                </td>
+                <td>
+                    test
+                </td>
+                <td>
+                    test
+                </td>
+                <td>
+                    @Html.ActionLink("Reserve", "Reserve")
+                    @Html.ActionLink("Edit", "Edit")
+                    @Html.ActionLink("Delete", "Delete")
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

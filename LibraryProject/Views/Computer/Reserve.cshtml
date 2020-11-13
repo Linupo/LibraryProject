@@ -1,0 +1,51 @@
+﻿@model LibraryProject.Models.ComputerModel
+
+@{
+    ViewBag.Title = "Kompiuterio rezervavimas";
+}
+
+<h2>Kompiuterio rezervavimas</h2>
+
+<div>
+    <h4>Kompiuterio informacija</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.kodas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kodas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vaizdo_plokste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vaizdo_plokste)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.procesorius)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.procesorius)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monitorius)
+        </dt>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Rezervuoti" class="btn btn-success" />
+            @Html.ActionLink("Atgal į sąrašą", "Index", "Computer", new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

@@ -140,6 +140,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ComputerModel.cs" />
     <Compile Include="Models\TemplateModel.cs" />
     <Compile Include="Models\AuthorModel.cs" />
     <Compile Include="Models\WorkerModel.cs" />
@@ -198,6 +199,10 @@
     <Content Include="Views\Worker\NewWorkerForm.cshtml" />
     <Content Include="Views\Worker\Details.cshtml" />
     <Content Include="Views\Workers\Index.cshtml" />
+    <Content Include="Views\Computer\Edit.cshtml" />
+    <Content Include="Views\Computer\Delete.cshtml" />
+    <Content Include="Views\Computer\Reserve.cshtml" />
+    <Content Include="Views\Computer\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
