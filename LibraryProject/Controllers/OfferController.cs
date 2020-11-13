@@ -16,6 +16,8 @@ namespace LibraryProject.Controllers
                 Id = 0,
                 Publisher = PublisherController.publishers[0],
                 Price = 57.49,
+                Amount = 5,
+                Stage = "Laukiama",
                 Book = BookController.book1
             },
            new OfferModel()
@@ -23,6 +25,8 @@ namespace LibraryProject.Controllers
                 Id = 1,
                 Publisher = PublisherController.publishers[1],
                 Price = 84.23,
+                Amount = 9,
+                Stage = "Laukiama",
                 Book = BookController.book2
             },
             new OfferModel()
@@ -30,6 +34,8 @@ namespace LibraryProject.Controllers
                 Id = 2,
                 Publisher = PublisherController.publishers[2],
                 Price = 12.87,
+                Amount = 1,
+                Stage = "Laukiama",
                 Book = BookController.book3
             }
         };
@@ -42,6 +48,26 @@ namespace LibraryProject.Controllers
         public ActionResult Details(int id)
         {
             return View(offers[id]);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return View(offers[id]);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Accept(int id)
+        {
+            return RedirectToAction("Index");
         }
     }
 }
