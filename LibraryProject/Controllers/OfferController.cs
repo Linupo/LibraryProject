@@ -49,5 +49,10 @@ namespace LibraryProject.Controllers
         {
             return View(offers[id]);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }
