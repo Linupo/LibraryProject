@@ -26,6 +26,7 @@
     </dl>
 </div>
 <p>
+    @Html.ActionLink("Patvirtinti", "Accept", new { id = Model.Id }, new { onclick = "return confirm('Ar tikrai norite patvirtinti šį pasiūlymą?')" }) |
     @Html.ActionLink("Redaguoti", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Grįžti į sąrašą", "Index")
 </p>

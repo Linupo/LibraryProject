@@ -54,5 +54,20 @@ namespace LibraryProject.Controllers
         {
             return View();
         }
+
+        public ActionResult Edit(int id)
+        {
+            return View(offers[id]);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Accept(int id)
+        {
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -31,9 +31,14 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.ActionLink("Redaguoti", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detaliau", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Ištrinti", "Delete", new { id=item.Id })
+            @Html.DisplayFor(modelItem => item.Stage)
+        </td>
+        <td>
+            @Html.ActionLink("Patvirtinti", "Accept", new { id = item.Id }, new { onclick = "return confirm('Ar tikrai norite patvirtinti šį pasiūlymą?')" }) |
+            @Html.ActionLink("Redaguoti", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Detaliau", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Ištrinti", "Delete", new { id = item.Id }, new { onclick="return confirm('Ar tikrai norite ištrinti šį pasiūlymą?')"})
+
         </td>
     </tr>
 }
