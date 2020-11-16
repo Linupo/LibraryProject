@@ -12,5 +12,10 @@ namespace LibraryProject.Models
         public string Description { get; set; }
         public int Year { get; set; }
         public string Id { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+        public string Explanation { get; set; }
+        
+
     }
 }

@@ -18,9 +18,12 @@ namespace LibraryProject.Controllers
         {
             Template = vincas,
             Tier = "Stalius",
-            Year = 1955-12-45,
+            Year = 1955 - 12 - 45,
             Description = "Nėra labai geras darbuotojas",
-            Id = "44549"
+            Id = "44549",
+            StartDate = "2020-01-01",
+            EndDate = "2021-02-01",
+            Explanation = "Išvyka į Bahamus"
         };
         public static WorkerModel worker2 = new WorkerModel
         {
@@ -28,7 +31,10 @@ namespace LibraryProject.Controllers
             Tier = "Stalius",
             Year = 1946-07-07,
             Description = "Įprastas darbuotojas",
-            Id = "44548"
+            Id = "44548",
+            StartDate = "2021-02-01",
+            EndDate = "2021-03-01",
+            Explanation = "Išvyka į JAV"
         };
         public static WorkerModel worker3 = new WorkerModel
         {
@@ -36,7 +42,10 @@ namespace LibraryProject.Controllers
             Tier = "Bibliotekininkas",
             Year = 1988-10-10,
             Description = "Metų darbuotojas",
-            Id = "44547"
+            Id = "44547",
+            StartDate = "2021-01-01",
+            EndDate = "2021-06-01",
+            Explanation = "Išvyka į Minską"
         };
         static WorkerModel worker4 = new WorkerModel
         {
@@ -44,7 +53,10 @@ namespace LibraryProject.Controllers
             Tier = "Administratorius",
             Year = 1975-05-15,
             Description = "Arba gerai arba nieko.",
-            Id = "44546"
+            Id = "44546",
+            StartDate = "2021-01-01",
+            EndDate = "2021-02-10",
+            Explanation = "Išvyka į Vilnių"
         };
 
         public ActionResult Index()
@@ -69,6 +81,34 @@ namespace LibraryProject.Controllers
         {
             return View();
         }
-        
+        public ActionResult ViewRequestsToLeave()
+        {
+            List<WorkerModel> workers = new List<WorkerModel>
+            {
+                worker1,
+                worker2,
+                worker3,
+                worker4
+            };
+
+            return View(workers);
+        }
+        public ActionResult RemoveWorkerForm()
+        {
+            return View();
+        }
+        public ActionResult EditWorkerForm()
+        {
+            return View();
+        }
+        public ActionResult ConfirmLeave()
+        {
+            return View();
+        }
+        public ActionResult PublisherCreate()
+        {
+            return View();
+        }
+
     }
 }

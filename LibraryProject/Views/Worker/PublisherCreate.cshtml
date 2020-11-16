@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "PublisherCreate";
+}
+
+<h2>Sukurti paskyrą leidyklai</h2>
+<div class="form-group">
+    <label for="id">Leidyklos ID</label>
+    <input type="text" class="form-control" id="name" placeholder="Įveskite leidyklos ID">
+</div>
+<div class="form-group">
+    <label for="title">Leidyklos pavadinimas</label>
+    <input type="text" class="form-control" id="genre" placeholder="Įveskite leidyklos pavadinimą">
+</div>
+<div class="form-group">
+    <label for="adress">Leidyklos adresas</label>
+    <input type="date" class="form-control" id="year" placeholder="Įveskite leidyklos adresą">
+</div>
+<p><a class="btn btn-primary" href="@Url.Action("Index", "Home")">Pridėti leidyklą</a></p>

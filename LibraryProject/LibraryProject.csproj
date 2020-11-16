@@ -205,6 +205,11 @@
     <Content Include="Views\Computer\Add.cshtml" />
     <Content Include="Views\Offer\Create.cshtml" />
     <Content Include="Views\Offer\Edit.cshtml" />
+    <Content Include="Views\Worker\RemoveWorkerForm.cshtml" />
+    <Content Include="Views\Worker\EditWorkerForm.cshtml" />
+    <Content Include="Views\Worker\ViewRequestsToLeave.cshtml" />
+    <Content Include="Views\Worker\ConfirmLeave.cshtml" />
+    <Content Include="Views\Worker\PublisherCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<LibraryProject.Models.WorkerModel>
+
+@{
+    ViewBag.Title = "Atostogų prašymai";
+}
+
+<h2>Atostogų prašymai</h2>
+
+
+
+@Html.ActionLink("Grįžti į pagrindinį meniu", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+
+<table class="table table-hover">
+    <tr>
+        <th>Darbuotojas</th>
+        <th>Atostogų pradžia</th>
+        <th>Atostogų pabaiga</th>
+        <th>Priežastis</th>
+    </tr>
+
+    @foreach (var worker in Model)
+    {
+        var templateName = String.Format("{0} {1}", worker.Template.Name, worker.Template.Surname);
+
+        <tr onclick="location.href = '@Url.Action("Details", new { id = worker.Id })'">
+            <td>@Html.DisplayFor(modelItem => templateName)</td>
+            <td>@Html.DisplayFor(modelItem => worker.StartDate)</td>
+            <td>@Html.DisplayFor(modelItem => worker.EndDate)</td>
+            <td>@Html.DisplayFor(modelItem => worker.Explanation)</td>
+        </tr>
+        <td></td>
+        <td><p><a class="btn btn-primary" href="@Url.Action("ConfirmLeave", "Worker")">Patvirtinti prašymą</a></p></td>
+    }
+</table>
