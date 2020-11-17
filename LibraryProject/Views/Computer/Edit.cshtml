@@ -60,6 +60,35 @@
     @Html.ActionLink("Atgal į sąrašą »", "Index", "Computer")
 </div>
 
+<h2>Paskutiniai naudotojai</h2>
+<table class="table table-hover">
+    <tr>
+        <th>Vardas</th>
+        <th>Pavardė</th>
+        <th>Rezervacija nuo</th>
+        <th>Rezervacija iki</th>
+    </tr>
+
+    <tr>
+        <td>Petras</td>
+        <td>Petrauskas</td>
+        <td>2020-10-10 11:30</td>
+        <td>2020-10-10 12:30</td>
+    </tr>
+    <tr>
+        <td>Antanas</td>
+        <td>Antanauskas</td>
+        <td>2020-09-23 16:30</td>
+        <td>2020-09-23 15:00</td>
+    </tr>
+    <tr>
+        <td>Domas</td>
+        <td>Domauskas</td>
+        <td>2020-05-14 9:00</td>
+        <td>2020-05-14 10:15</td>
+    </tr>
+</table>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
