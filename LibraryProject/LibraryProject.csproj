@@ -193,12 +193,9 @@
     <Content Include="Views\Book\NewBookForm.cshtml" />
     <Content Include="Views\Offer\Details.cshtml" />
     <Content Include="Views\Offer\Index.cshtml" />
-    <Content Include="Views\Computers\Index.cshtml" />
-    <Content Include="Views\Books\Index.cshtml" />
     <Content Include="Views\Worker\Index.cshtml" />
     <Content Include="Views\Worker\NewWorkerForm.cshtml" />
     <Content Include="Views\Worker\Details.cshtml" />
-    <Content Include="Views\Workers\Index.cshtml" />
     <Content Include="Views\Computer\Edit.cshtml" />
     <Content Include="Views\Computer\Delete.cshtml" />
     <Content Include="Views\Computer\Reserve.cshtml" />
