@@ -187,12 +187,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Auth\Register.cshtml" />
-    <Content Include="Views\Book\Index.cshtml" />
-    <Content Include="Views\Book\Details.cshtml" />
+    <Content Include="Views\Book\Details_deprecated.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Computer\Index.cshtml" />
     <Content Include="Views\Publisher\Index.cshtml" />
-    <Content Include="Views\Book\NewBookForm.cshtml" />
+    <Content Include="Views\Book\Create.cshtml" />
     <Content Include="Views\Offer\Details.cshtml" />
     <Content Include="Views\Offer\Index.cshtml" />
     <Content Include="Views\Worker\Index.cshtml" />
@@ -209,6 +208,9 @@
     <Content Include="Views\Worker\ViewRequestsToLeave.cshtml" />
     <Content Include="Views\Worker\ConfirmLeave.cshtml" />
     <Content Include="Views\Worker\PublisherCreate.cshtml" />
+    <Content Include="Views\Book\Index.cshtml" />
+    <Content Include="Views\Book\Details.cshtml" />
+    <Content Include="Views\Book\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

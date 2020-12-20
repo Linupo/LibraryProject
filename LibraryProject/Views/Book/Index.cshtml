@@ -1,30 +1,75 @@
 ﻿@model IEnumerable<LibraryProject.Models.BookModel>
 
 @{
-    ViewBag.Title = "Knygų sąrašas";
+    ViewBag.Title = "View";
 }
 
-<h2>Knygų sąrašas</h2>
+<h2>Knygos</h2>
 
-<p><a class="btn btn-primary" href="@Url.Action("NewBookForm", "Book")">Pridėti knygą</a></p>
-
-<table class="table table-hover">
+<p>
+    @Html.ActionLink("Sukurti naują knygą", "Create")
+</p>
+<table class="table">
     <tr>
-        <th>Autorius</th>
-        <th>Pavadinimas</th>
-        <th>Išleidimo metai</th>
-        <th>Aprašymas</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearWritten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PageCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MinAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GenreId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConditionId)
+        </th>
+        <th></th>
     </tr>
 
-@foreach (var book in Model)
-{
-    var authorName = String.Format("{0} {1}", book.Author.Name, book.Author.Surname);
-
-    <tr onclick="location.href = '@Url.Action("Details", new { id = book.ISBN })'">
-        <td>@Html.DisplayFor(modelItem => authorName)</td>
-        <td>@Html.DisplayFor(modelItem => book.Title)</td>
-        <td>@Html.DisplayFor(modelItem => book.YearWritten)</td>
-        <td>@Html.DisplayFor(modelItem => book.Description)</td>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearWritten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISBN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PageCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MinAge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @item.GetGenre()
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConditionId)
+        </td>
+        <td>
+            @Html.ActionLink("Redaguoti", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Išsamiau", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Ištrinti", "Delete", new { id=item.Id })
+        </td>
     </tr>
 }
+
 </table>

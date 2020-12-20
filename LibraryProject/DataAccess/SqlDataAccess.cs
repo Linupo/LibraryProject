@@ -29,5 +29,13 @@ namespace LibraryProject.DataAccess
                 return db.Execute(sql, data);
             }
         }
+
+        public static void Execute(string sql)
+        {
+            using (IDbConnection db = new SqlConnection(GetConnectionString()))
+            {
+                db.Execute(sql);
+            }
+        }
     }
 }
