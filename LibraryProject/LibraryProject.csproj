@@ -132,10 +132,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\WorkerController.cs" />
     <Compile Include="Controllers\BookController.cs" />
-    <Compile Include="Controllers\WorkersController.cs" />
-    <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\ComputerController.cs" />
-    <Compile Include="Controllers\ComputersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
