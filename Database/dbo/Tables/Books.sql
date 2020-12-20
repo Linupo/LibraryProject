@@ -5,7 +5,7 @@
 	PublisherId int NULL,
 	AuthorId int NOT NULL,
 	Title text NOT NULL,
-	Desciption text NOT NULL,
+	[Description] text NOT NULL,
 	YearWritten int NOT NULL,
 	Country text NOT NULL,
 	Language text NOT NULL,
