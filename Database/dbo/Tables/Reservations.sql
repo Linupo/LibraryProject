@@ -1,0 +1,10 @@
+﻿CREATE TABLE Reservations
+(
+	Id int IDENTITY(1, 1) NOT NULL PRIMARY KEY,
+	StartDate date NOT NULL,
+	EndDate date NOT NULL,
+	UserId int NOT NULL,
+	FOREIGN KEY (UserId) REFERENCES Users (Id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);

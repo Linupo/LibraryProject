@@ -1,0 +1,22 @@
+﻿CREATE TABLE Offers
+(
+	Id int IDENTITY(1, 1) NOT NULL PRIMARY KEY,
+	Price int NOT NULL,
+	Amount int NOT NULL,
+	StartDate date NOT NULL,
+	EndDate date NOT NULL,
+	StatusId int NOT NULL,
+	LibraryId int NOT NULL,
+	PublisherId int NOT NULL,
+	BookId int NOT NULL,
+	FOREIGN KEY (StatusId) REFERENCES Statuses (Id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	FOREIGN KEY (LibraryId) REFERENCES Libraries (Id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	FOREIGN KEY (PublisherId) REFERENCES Publishers (Id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	FOREIGN KEY (BookId) REFERENCES Books (Id)
+);

@@ -1,0 +1,12 @@
+﻿CREATE TABLE UserLibraries
+(
+	UserId int NOT NULL,
+	LibraryId int NOT NULL,
+	PRIMARY KEY (UserId, LibraryId),
+	FOREIGN KEY (UserId) REFERENCES Users (Id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	FOREIGN KEY (LibraryId) REFERENCES Libraries (Id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+);
