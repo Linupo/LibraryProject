@@ -19,5 +19,10 @@ namespace LibraryProject.DataAccess
         public DbSet<Status> Statuses { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Vacation> Vacations { get; set; }
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    Database.SetInitializer<LibraryDB>(null);
+        //}
     }
 }

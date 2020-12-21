@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Knygų sąrašas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Sukurti Naują", "Create")
 </p>
 <table class="table">
     <tr>
@@ -28,9 +28,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.YearWritten)
@@ -81,9 +78,6 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.YearWritten)
             </td>
             <td>
@@ -108,9 +102,9 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.BookId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.BookId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.BookId })
+                @Html.ActionLink("Modifikuoti", "Edit", new { id = item.BookId }) |
+                @Html.ActionLink("Detaliau", "Details", new { id = item.BookId }) |
+                @Html.ActionLink("Ištrinti", "Delete", new { id = item.BookId })
             </td>
         </tr>
     }
