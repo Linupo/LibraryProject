@@ -233,6 +233,7 @@
     <Content Include="Views\Publisher\Index.cshtml" />
     <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Views\Book\Create.cshtml" />
+    <Content Include="Views\Book\FreeBooks.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
