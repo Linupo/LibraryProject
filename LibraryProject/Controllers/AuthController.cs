@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using LibraryProject.DataAccess;
@@ -66,10 +68,37 @@ namespace LibraryProject.Controllers
             {
                 db.Users.Add(user);
                 db.SaveChanges();
+
+                // TODO uncomment to send emails upon successful registration
+                //SendEmail(user.Email);
                 return RedirectToAction("Index", "Home");
             }
 
             return View();
+        }
+
+        private void SendEmail(string toEmail)
+        {
+            var username = "ktulibraryproject@gmail.com";
+            var password = "nu smagumelis";
+
+            SmtpClient client = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(username, password)
+            };
+
+            using (var message = new MailMessage(username, toEmail))
+            {
+                message.Subject = "Bibliotekos registracijos patvirtinimas";
+                message.Body = "Jūsų registracija patvirtinta.";
+                message.IsBodyHtml = false;
+                client.Send(message);
+            }
         }
     }
 
@@ -107,5 +136,4 @@ namespace LibraryProject.Controllers
             Publisher = 3
         }
     }
-
 }
