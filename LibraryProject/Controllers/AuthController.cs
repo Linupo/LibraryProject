@@ -17,6 +17,12 @@ namespace LibraryProject.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            Auth.SetRole((int)Auth.Roles.NotLoggedIn);
+            return RedirectToAction("Login");
+        }
+
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
@@ -95,6 +101,7 @@ namespace LibraryProject.Controllers
 
         public enum Roles
         {
+            NotLoggedIn = 0,
             LibraryWorker = 1,
             LibraryUser = 2,
             Publisher = 3
