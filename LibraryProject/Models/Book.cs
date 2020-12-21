@@ -73,7 +73,7 @@ namespace LibraryProject.Models
         [Required]
         public virtual Condition Condition { get; set; }
 
-        //public virtual List<Reservation> Reservations { get; set; }
+        public virtual List<Reservation> Reservations { get; set; }
 
 
         //public virtual IEnumerable<Library> Libraries { get; set; }
