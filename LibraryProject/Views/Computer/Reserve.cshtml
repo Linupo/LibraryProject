@@ -1,4 +1,4 @@
-﻿@model LibraryProject.Models.ComputerModel
+﻿@model LibraryProject.Models.Computer
 
 @{
     ViewBag.Title = "Kompiuterio rezervavimas";
@@ -11,31 +11,23 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.kodas)
+            @Html.DisplayNameFor(model => model.CPU)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.kodas)
+            @Html.DisplayFor(model => model.CPU)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.vaizdo_plokste)
+            @Html.DisplayNameFor(model => model.GPU)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.vaizdo_plokste)
+            @Html.DisplayFor(model => model.GPU)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.procesorius)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.procesorius)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.monitorius)
+            @Html.DisplayNameFor(model => model.Monitor)
         </dt>
     </dl>
 

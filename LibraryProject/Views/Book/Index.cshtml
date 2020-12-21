@@ -1,30 +1,118 @@
-﻿@model IEnumerable<LibraryProject.Models.BookModel>
+﻿@model IEnumerable<LibraryProject.Models.Book>
 
 @{
-    ViewBag.Title = "Knygų sąrašas";
+    ViewBag.Title = "Index";
 }
 
-<h2>Knygų sąrašas</h2>
+<h2>Index</h2>
 
-<p><a class="btn btn-primary" href="@Url.Action("NewBookForm", "Book")">Pridėti knygą</a></p>
-
-<table class="table table-hover">
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
     <tr>
-        <th>Autorius</th>
-        <th>Pavadinimas</th>
-        <th>Išleidimo metai</th>
-        <th>Aprašymas</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Condition.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Library.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearWritten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Language)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PageCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MinAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
     </tr>
 
-@foreach (var book in Model)
-{
-    var authorName = String.Format("{0} {1}", book.Author.Name, book.Author.Surname);
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Condition.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Library.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearWritten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PageCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BookId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.BookId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BookId })
+            </td>
+        </tr>
+    }
 
-    <tr onclick="location.href = '@Url.Action("Details", new { id = book.ISBN })'">
-        <td>@Html.DisplayFor(modelItem => authorName)</td>
-        <td>@Html.DisplayFor(modelItem => book.Title)</td>
-        <td>@Html.DisplayFor(modelItem => book.YearWritten)</td>
-        <td>@Html.DisplayFor(modelItem => book.Description)</td>
-    </tr>
-}
 </table>

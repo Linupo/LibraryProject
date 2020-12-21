@@ -1,46 +1,138 @@
-﻿@model LibraryProject.Models.BookModel
+﻿@model LibraryProject.Models.Book
 
 @{
-    ViewBag.Title = Model.Title;
+    ViewBag.Title = "Details";
 }
 
-<div class="text-center" style="margin-top: 26px; margin-bottom: 26px;">
-    <h2>@Model.Title (@Model.YearWritten)</h2>
-    <h5>@Model.Author</h5>
+<h2>Details</h2>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Author.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Condition.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Condition.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Library.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Library.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Publisher.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Publisher.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YearWritten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YearWritten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Language)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Language)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PageCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PageCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
 </div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-4">
-        <img src="https://upload.wikimedia.org/wikipedia/lt/2/2b/Altori%C5%B3_%C5%A1e%C5%A1%C4%97ly.jpg" class="center-block book-img" />
-    </div>
-    <p class="col-xs-12 col-sm-8">@Model.Description</p>
-</div>
-
-<h2>Paskutiniai naudotojai</h2>
-<table class="table table-hover">
-    <tr>
-        <th>Vardas</th>
-        <th>Pavardė</th>
-        <th>Rezervacija nuo</th>
-        <th>Rezervacija iki</th>
-    </tr>
-
-    <tr>
-        <td>Petras</td>
-        <td>Petrauskas</td>
-        <td>2020-10-10</td>
-        <td>2020-11-10</td>
-    </tr>
-    <tr>
-        <td>Antanas</td>
-        <td>Antanauskas</td>
-        <td>2020-09-23</td>
-        <td>2020-10-01</td>
-    </tr>
-    <tr>
-        <td>Domas</td>
-        <td>Domauskas</td>
-        <td>2020-05-14</td>
-        <td>2020-07-10</td>
-    </tr>
-</table>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

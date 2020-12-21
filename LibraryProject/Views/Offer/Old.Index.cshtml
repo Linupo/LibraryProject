@@ -1,0 +1,45 @@
+﻿@model IEnumerable<LibraryProject.Models.OfferModel>
+
+@{
+    ViewBag.Title = "Pasiūlymų sąrašas";
+}
+
+<h2>Pasiūlymų sąrašas</h2>
+
+<p><a class="btn btn-primary" href="@Url.Action("Create", "Offer")">Sukurti naują pasiūlmą</a></p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Publisher.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stage)
+        </td>
+        <td>
+            @Html.ActionLink("Patvirtinti", "Accept", new { id = item.Id }, new { onclick = "return confirm('Ar tikrai norite patvirtinti šį pasiūlymą?')" }) |
+            @Html.ActionLink("Redaguoti", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Detaliau", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Ištrinti", "Delete", new { id = item.Id }, new { onclick="return confirm('Ar tikrai norite ištrinti šį pasiūlymą?')"})
+
+        </td>
+    </tr>
+}
+</table>

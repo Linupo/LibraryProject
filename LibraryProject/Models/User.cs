@@ -3,36 +3,36 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LibraryProject.Models
 {
-    public class UserModel
+    public class User
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
 
+        [Required]
         [Display(Name = "Vardas")]
-        [Required(ErrorMessage = "Įveskite savo vardą")]
         public string FirstName { get; set; }
 
+        [Required]
         [Display(Name = "Pavardė")]
-        [Required(ErrorMessage = "Įveskite savo pavardę")]
         public string LastName { get; set; }
 
+        [Required]
         [Display(Name = "Asmens kodas")]
-        [Required(ErrorMessage = "Įveskite savo asmens kodą")]
         public string PersonalCode { get; set; }
 
-        [Display(Name = "El. pašto adresas")]
-        [Required(ErrorMessage = "Įveskite savo el. pašto adresą")]
+        [Required]
+        [Display(Name = "El. paštas")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Required]
         [Display(Name = "Slaptažodis")]
-        [Required(ErrorMessage = "Įveskite slaptažodį")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public bool IsActive { get; set; }
+        public string IsActive { get; set; }
 
+        [Required]
         [Display(Name = "Gimimo data")]
-        [Required(ErrorMessage = "Nurodykite savo gimimo datą")]
         [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
     }

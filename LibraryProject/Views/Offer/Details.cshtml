@@ -1,32 +1,82 @@
-﻿@model LibraryProject.Models.OfferModel
+﻿@model LibraryProject.Models.Offer
 
 @{
-    ViewBag.Title = "Pasiūlymas";
+    ViewBag.Title = "Details";
 }
 
-<h2>Pasiūlymas</h2>
+<h2>Details</h2>
 
 <div>
+    <h4>Offer</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>@Html.DisplayNameFor(model => model.Publisher.Title)</dt>
-        <dd>@Html.DisplayFor(model => model.Publisher.Title)</dd>
-        <dt>@Html.DisplayNameFor(model => model.Publisher.Address)</dt>
-        <dd>@Html.DisplayFor(model => model.Publisher.Address)</dd>
-        <dt>@Html.DisplayNameFor(model => model.Price)</dt>
-        <dd>@Html.DisplayFor(model => model.Price)</dd>
-        <dt>@Html.DisplayNameFor(model => model.Amount)</dt>
-        <dd>@Html.DisplayFor(model => model.Amount)</dd>
-        <dt>Autorius</dt>
-        <dd>@Html.DisplayFor(model => model.Book.Author.Name)  @Html.DisplayFor(model => model.Book.Author.Surname)</dd>
-        <dt>Pavadiniams</dt>
-        <dd>@Html.DisplayFor(model => model.Book.Title)</dd>
-        <dt>Aprašymas</dt>
-        <dd>@Html.DisplayFor(model => model.Book.Description)</dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LibraryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LibraryId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublisherId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublisherId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Patvirtinti", "Accept", new { id = Model.Id }, new { onclick = "return confirm('Ar tikrai norite patvirtinti šį pasiūlymą?')" }) |
-    @Html.ActionLink("Redaguoti", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Grįžti į sąrašą", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OfferId }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

@@ -1,39 +1,35 @@
-﻿using LibraryProject.Models;
-using System;
-using System.Collections.Generic;
+﻿using LibraryProject.DataAccess;
+using LibraryProject.Models;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace LibraryProject.Controllers
 {
     public class PublisherController : Controller
     {
-        public static List<PublisherModel> publishers = new List<PublisherModel>()
+        private readonly LibraryDB db = new LibraryDB();
+
+        public ActionResult Create()
         {
-            new PublisherModel()
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Publisher publisher)
+        {
+            if (ModelState.IsValid)
             {
-                Id = 0,
-                Title = "Pegasas",
-                Address = "Karaliaus Mindaugo pr. 49, 4333 Kaunas"
-            },
-           new PublisherModel()
-            {
-                Id = 1,
-                Title = "Obuolys",
-                Address = "Maironio g. 6-1, LT-44302 Kaunas"
-            },
-            new PublisherModel()
-            {
-                Id = 2,
-                Title = "Vaga",
-                Address = "Gedimino pr. 50, LT-01110 Vilnius"
+                db.Publishers.Add(publisher);
+                return RedirectToAction("Index");
             }
-        };
+
+            return View();
+        }
 
         public ActionResult Index()
         {
-            return View();
+            return View(db.Publishers.ToList());
         }
     }
 }
