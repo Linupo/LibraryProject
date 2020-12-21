@@ -19,23 +19,34 @@ namespace LibraryProject.Controllers
             return View(db.Books.Find(id));
         }
 
+        public ActionResult Edit(int id)
+        {
+            return View(db.Books.Find(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Book book)
+        {
+            if (ModelState.IsValid)
+            {
+                var old = db.Books.Find(book.BookId);
+                db.Entry(old).CurrentValues.SetValues(book);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var toBeRemoved = db.Books.Find(id);
+            db.Books.Remove(toBeRemoved);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Create()
         {
-            //var libraries = db.Libraries.ToList();
-            //var publishers = db.Publishers.ToList();
-            //var authors = db.Authors.ToList();
-            //var genres = db.Genres.ToList();
-            //var conditions = db.Conditions.ToList();
-
-            //Book book = new Book
-            //{
-            //    Libraries = libraries,
-            //    Publishers = publishers,
-            //    Authors = authors,
-            //    Genres = genres,
-            //    Conditions = conditions
-            //};
-
             return View();
         }
 
