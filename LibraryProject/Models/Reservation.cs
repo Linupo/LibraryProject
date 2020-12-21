@@ -8,7 +8,8 @@ namespace LibraryProject.Models
     {
         public int ReservationId { get; set; }
 
-        //public int UserId { get; set; }
+        [Required]
+        public int UserId { get; set; }
 
         [Required]
         [Display(Name = "Pradžia")]
@@ -20,7 +21,6 @@ namespace LibraryProject.Models
         [DataType(DataType.DateTime)]
         public DateTime EndDate { get; set; }
 
-        [Required]
         public virtual User User { get; set; }
 
         public virtual List<Book> Books { get; set; }

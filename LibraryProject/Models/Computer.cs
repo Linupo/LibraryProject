@@ -6,8 +6,8 @@ namespace LibraryProject.Models
     {
         public int ComputerId { get; set; }
 
-        //[Required]
-        //public int LibraryId { get; set; }
+        [Required]
+        public int LibraryId { get; set; }
 
         [Required]
         public string CPU { get; set; }

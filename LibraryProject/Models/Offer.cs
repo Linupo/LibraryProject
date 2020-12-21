@@ -6,14 +6,18 @@ namespace LibraryProject.Models
     public class Offer
     {
         public int OfferId { get; set; }
-        
-        //public int StatusId { get; set; }
 
-        //public int LibraryId { get; set; }
+        [Required]
+        public int StatusId { get; set; }
 
-        //public int PublisherId { get; set; }
+        [Required]
+        public int LibraryId { get; set; }
 
-        //public int BookId { get; set; }
+        [Required]
+        public int PublisherId { get; set; }
+
+        [Required]
+        public int BookId { get; set; }
 
         [Required]
         [Display(Name = "Kaina")]
@@ -36,16 +40,12 @@ namespace LibraryProject.Models
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
 
-        [Required]
         public virtual Status Status { get; set; }
 
-        [Required]
         public virtual Library Library { get; set; }
 
-        [Required]
         public virtual Publisher Publisher { get; set; }
 
-        [Required]
         public virtual Book Book { get; set; }
     }
 }
