@@ -67,6 +67,26 @@ namespace LibraryProject.Controllers
             return View();
         }
 
+        public ActionResult FreeBooks()
+        {
+            var reservations = db.Reservations.ToList();
+            var reservedIds = new List<int>();
+            foreach (var reservation in reservations)
+            {
+                foreach (var book in reservation.Books)
+                {
+                    reservedIds.Add(book.BookId);
+                }
+            }
+            var filteredBooks = new List<Book>();
+            foreach (var book in db.Books.ToList())
+            {
+                if (!reservedIds.Contains(book.BookId))
+                    filteredBooks.Add(book);
+            }
+            return View(filteredBooks);
+        }
+
         private void PopulateBookDropdowns(object selectedBook = null)
         {
             var libraryQuery = from l in db.Libraries select l;
