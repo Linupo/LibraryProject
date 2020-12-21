@@ -164,6 +164,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database.mdf" />
+    <Content Include="App_Data\Database_log.ldf">
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -198,7 +202,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
-    <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Views\Book\Details_old.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Computer\Old.Index.cshtml" />
@@ -213,7 +216,6 @@
     <Content Include="Views\Employee\ConfirmLeave.cshtml" />
     <Content Include="Views\Employee\PublisherCreate.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
-    <Content Include="Views\Book\Create.cshtml" />
     <Content Include="Views\Book\Details.cshtml" />
     <Content Include="Views\Computer\Create.cshtml" />
     <Content Include="Views\Computer\Delete.cshtml" />
@@ -229,10 +231,9 @@
     <Content Include="Views\Offer\Delete.cshtml" />
     <Content Include="Views\Publisher\Create.cshtml" />
     <Content Include="Views\Publisher\Index.cshtml" />
+    <Content Include="Views\Auth\Register.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

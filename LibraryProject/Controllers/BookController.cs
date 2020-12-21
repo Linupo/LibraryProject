@@ -21,22 +21,22 @@ namespace LibraryProject.Controllers
 
         public ActionResult Create()
         {
-            var libraries = db.Libraries.ToList();
-            var publishers = db.Publishers.ToList();
-            var authors = db.Authors.ToList();
-            var genres = db.Genres.ToList();
-            var conditions = db.Conditions.ToList();
+            //var libraries = db.Libraries.ToList();
+            //var publishers = db.Publishers.ToList();
+            //var authors = db.Authors.ToList();
+            //var genres = db.Genres.ToList();
+            //var conditions = db.Conditions.ToList();
 
-            Book book = new Book
-            {
-                Libraries = libraries,
-                Publishers = publishers,
-                Authors = authors,
-                Genres = genres,
-                Conditions = conditions
-            };
+            //Book book = new Book
+            //{
+            //    Libraries = libraries,
+            //    Publishers = publishers,
+            //    Authors = authors,
+            //    Genres = genres,
+            //    Conditions = conditions
+            //};
 
-            return View(book);
+            return View();
         }
 
         [HttpPost]
