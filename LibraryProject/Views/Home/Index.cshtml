@@ -1,54 +1,74 @@
-﻿@{
+﻿@using LibraryProject.Controllers
+
+@{
     ViewBag.Title = "Pagrindinis puslapis";
 }
 
 <h1>Pagrindinis bibliotekos puslapis</h1>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Knygos</h2>
-        <p>
-            Peržiūrėkite bibliotekos turimas knygas ar atlikite knygų rezervaciją internetu. <br />
-            Knygų administravimas (darbuotojams).
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("Index", "Book")">Knygų sąrašas &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Kompiuteriai</h2>
-        <p>
-            Užsirezervuokite kompiuterį bibliotekoje.<br />
-            Kompiuterių administravimas (darbuotojams).
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("Index", "Computer")">Kompiuterių sąrašas &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Leidyklų pasiūlymai</h2>
-        <p>Peržiūrėkite leidyklų siūlomas knygas, patvirtinkite ar atšaukite užsakymus (darbuotojams).</p>
-        <p><a class="btn btn-default" href="@Url.Action("Index", "Offer")">Pasiūlymų sąrašas &raquo;</a></p>
-    </div>
+    @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker || Auth.GetRole() == (int)Auth.Roles.LibraryUser)
+    {
+        <div class="col-md-4">
+            <h2>Knygos</h2>
+            <p>
+                Peržiūrėkite bibliotekos turimas knygas ar atlikite knygų rezervaciją internetu. <br />
+                Knygų administravimas (darbuotojams).
+            </p>
+            <p><a class="btn btn-default" href="@Url.Action("Index", "Book")">Knygų sąrašas &raquo;</a></p>
+        </div>
+    }
+    @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker || Auth.GetRole() == (int)Auth.Roles.LibraryUser)
+    {
+        <div class="col-md-4">
+            <h2>Kompiuteriai</h2>
+            <p>
+                Užsirezervuokite kompiuterį bibliotekoje.<br />
+                Kompiuterių administravimas (darbuotojams).
+            </p>
+            <p><a class="btn btn-default" href="@Url.Action("Index", "Computer")">Kompiuterių sąrašas &raquo;</a></p>
+        </div>
+    }
+    @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
+    {
+        <div class="col-md-4">
+            <h2>Leidyklų pasiūlymai</h2>
+            <p>Peržiūrėkite leidyklų siūlomas knygas, patvirtinkite ar atšaukite užsakymus (darbuotojams).</p>
+            <p><a class="btn btn-default" href="@Url.Action("Index", "Offer")">Pasiūlymų sąrašas &raquo;</a></p>
+        </div>
+    }
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Darbuotojai</h2>
-        <p>
-            Peržiūrėkite mūsų darbuotojus. <br />
-            Darbuotojų administravimas (viršininkams).
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("Index", "Employee")">Darbuotojų sąrašas &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Leidyklos paskyros kūrimas</h2>
-        <p>
-            Paskyros leidyklai kūrimas (viršininkams). <br />
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("PublisherCreate", "Employee")">Darbuotojų sąrašas &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Atostogų prašymai</h2>
-        <p>
-            Atostogų prašymų peržiūra ir tvirtinimas (viršininkams). <br />
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("ViewRequestsToLeave", "Employee")">Atostogų prašymai &raquo;</a></p>
-    </div>
+    @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
+    {
+        <div class="col-md-4">
+            <h2>Darbuotojai</h2>
+            <p>
+                Peržiūrėkite mūsų darbuotojus. <br />
+                Darbuotojų administravimas (viršininkams).
+            </p>
+            <p><a class="btn btn-default" href="@Url.Action("Index", "Employee")">Darbuotojų sąrašas &raquo;</a></p>
+        </div>
+    }
+    @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
+    {
+        <div class="col-md-4">
+            <h2>Leidyklos paskyros kūrimas</h2>
+            <p>
+                Paskyros leidyklai kūrimas (viršininkams). <br />
+            </p>
+            <p><a class="btn btn-default" href="@Url.Action("PublisherCreate", "Employee")">Darbuotojų sąrašas &raquo;</a></p>
+        </div>
+    }
+    @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
+    {
+        <div class="col-md-4">
+            <h2>Atostogų prašymai</h2>
+            <p>
+                Atostogų prašymų peržiūra ir tvirtinimas (viršininkams). <br />
+            </p>
+            <p><a class="btn btn-default" href="@Url.Action("ViewRequestsToLeave", "Employee")">Atostogų prašymai &raquo;</a></p>
+        </div>
+    }
 </div>

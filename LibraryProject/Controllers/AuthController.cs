@@ -17,6 +17,36 @@ namespace LibraryProject.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Login(string email, string password)
+        {
+            foreach(var user in db.Users.ToList())
+            {
+                if(user.Email == email && user.Password == password)
+                {
+                    Auth.SetRole((int)Auth.Roles.LibraryUser);
+                    break;
+                }
+            }
+            foreach (var user in db.Employees.ToList())
+            {
+                if (user.Email == email && user.Password == password)
+                {
+                    Auth.SetRole((int)Auth.Roles.LibraryWorker);
+                    break;
+                }
+            }
+            foreach (var user in db.Publishers.ToList())
+            {
+                if (user.Email == email && user.Password == password)
+                {
+                    Auth.SetRole((int)Auth.Roles.Publisher);
+                    break;
+                }
+            }
+            return RedirectToAction("index", "Home");
+        }
+
         public ActionResult Register()
         {
             return View();
@@ -65,10 +95,9 @@ namespace LibraryProject.Controllers
 
         public enum Roles
         {
-            NotLoggedIn = 0,
-            LibraryAdmin = 1,
-            LibraryWorker = 2,
-            LibraryUser = 3
+            LibraryWorker = 1,
+            LibraryUser = 2,
+            Publisher = 3
         }
     }
 
