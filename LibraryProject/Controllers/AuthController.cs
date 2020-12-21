@@ -10,7 +10,7 @@ namespace LibraryProject.Controllers
 {
     public class AuthController : Controller
     {
-
+        private readonly LibraryDB db = new LibraryDB();
 
         public ActionResult Login()
         {
@@ -24,13 +24,11 @@ namespace LibraryProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(UserModel model)
+        public ActionResult Register(User user)
         {
             if (ModelState.IsValid)
             {
-                string sql = @"INSERT INTO Users (FirstName, LastName, PersonalCode, Email, Password, IsActive, Birthday)
-                               VALUES (@FirstName, @LastName, @PersonalCode, @Email, @Password, 1, @Birthday);";
-                SqlDataAccess.SaveData(sql, model);
+                db.Users.Add(user);
                 return RedirectToAction("Index", "Home");
             }
 

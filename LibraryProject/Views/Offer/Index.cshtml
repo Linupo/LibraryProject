@@ -1,45 +1,75 @@
-﻿@model IEnumerable<LibraryProject.Models.OfferModel>
+﻿@model IEnumerable<LibraryProject.Models.Offer>
 
 @{
-    ViewBag.Title = "Pasiūlymų sąrašas";
+    ViewBag.Title = "Index";
 }
 
-<h2>Pasiūlymų sąrašas</h2>
+<h2>Index</h2>
 
-<p><a class="btn btn-primary" href="@Url.Action("Create", "Offer")">Sukurti naują pasiūlmą</a></p>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Publisher)
+            @Html.DisplayNameFor(model => model.StatusId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LibraryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublisherId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Stage)
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
+@foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Publisher.Title)
+            @Html.DisplayFor(modelItem => item.StatusId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LibraryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublisherId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Stage)
+            @Html.DisplayFor(modelItem => item.Amount)
         </td>
         <td>
-            @Html.ActionLink("Patvirtinti", "Accept", new { id = item.Id }, new { onclick = "return confirm('Ar tikrai norite patvirtinti šį pasiūlymą?')" }) |
-            @Html.ActionLink("Redaguoti", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Detaliau", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Ištrinti", "Delete", new { id = item.Id }, new { onclick="return confirm('Ar tikrai norite ištrinti šį pasiūlymą?')"})
-
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OfferId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OfferId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OfferId })
         </td>
     </tr>
 }
+
 </table>

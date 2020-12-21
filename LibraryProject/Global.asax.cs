@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -8,7 +6,7 @@ using System.Web.Routing;
 
 namespace LibraryProject
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -16,6 +14,9 @@ namespace LibraryProject
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //Database.SetInitializer(new DropCreateDatabaseAlways<DataAccess.LibraryDB>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataAccess.LibraryDB>());
         }
     }
 }

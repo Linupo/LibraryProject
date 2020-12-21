@@ -1,56 +1,51 @@
-﻿@model IEnumerable<LibraryProject.Models.ComputerModel>
+﻿@model IEnumerable<LibraryProject.Models.Computer>
 
 @{
-    ViewBag.Title = "Kompiuterių sąrašas";
+    ViewBag.Title = "Index";
 }
 
-<h2>Kompiuterių sąrašas</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Naujas kompiuteris", "Add", "Computer")
+    @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-striped datatable">
-    <thead>
-        <tr style="background-color: lightblue">
-            <th>
-                @Html.DisplayNameFor(model => model.kodas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.vaizdo_plokste)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.procesorius)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.monitorius)
-            </th>
-            <th style="width: 18%"></th>
-        </tr>
-    </thead>
-    <tbody>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Library.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GPU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Monitor)
+        </th>
+        <th></th>
+    </tr>
 
-        @for (int i = 0; i < 10; i++)
-        {
-            <tr>
-                <td>
-                    test
-                </td>
-                <td>
-                    test
-                </td>
-                <td>
-                    test
-                </td>
-                <td>
-                    test
-                </td>
-                <td>
-                    @Html.ActionLink("Reserve", "Reserve")
-                    @Html.ActionLink("Edit", "Edit")
-                    @Html.ActionLink("Delete", "Delete")
-                </td>
-            </tr>
-        }
-    </tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Library.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CPU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GPU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monitor)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ComputerId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ComputerId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ComputerId })
+        </td>
+    </tr>
+}
 
 </table>

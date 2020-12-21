@@ -1,10 +1,10 @@
 ﻿@model LibraryProject.Models.ComputerModel
 
 @{
-    ViewBag.Title = "Kompiuterio pridėjimas";
+    ViewBag.Title = "Kompiuterio redagavimas";
 }
 
-<h2>Kompiuterio pridėjimas</h2>
+<h2>Kompiuterio redagavimas</h2>
 
 
 @using (Html.BeginForm())
@@ -18,7 +18,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.kodas, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.kodas, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.kodas, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                     @Html.ValidationMessageFor(model => model.kodas, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -49,7 +49,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Pridėti" class="btn btn-success" />
+                    <input type="submit" value="Išsaugoti" class="btn btn-success" />
                 </div>
             </div>
         </div>
@@ -59,6 +59,35 @@
 <div>
     @Html.ActionLink("Atgal į sąrašą »", "Index", "Computer")
 </div>
+
+<h2>Paskutiniai naudotojai</h2>
+<table class="table table-hover">
+    <tr>
+        <th>Vardas</th>
+        <th>Pavardė</th>
+        <th>Rezervacija nuo</th>
+        <th>Rezervacija iki</th>
+    </tr>
+
+    <tr>
+        <td>Petras</td>
+        <td>Petrauskas</td>
+        <td>2020-10-10 11:30</td>
+        <td>2020-10-10 12:30</td>
+    </tr>
+    <tr>
+        <td>Antanas</td>
+        <td>Antanauskas</td>
+        <td>2020-09-23 16:30</td>
+        <td>2020-09-23 15:00</td>
+    </tr>
+    <tr>
+        <td>Domas</td>
+        <td>Domauskas</td>
+        <td>2020-05-14 9:00</td>
+        <td>2020-05-14 10:15</td>
+    </tr>
+</table>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
