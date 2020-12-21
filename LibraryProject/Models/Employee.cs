@@ -9,11 +9,11 @@ namespace LibraryProject.Models
 
         public int? ReportsToId { get; set; }
 
-        //[Required]
-        //public int DutyId { get; set; }
+        [Required]
+        public int DutyId { get; set; }
 
-        //[Required]
-        //public int LibraryId { get; set; }
+        [Required]
+        public int LibraryId { get; set; }
 
         [Required]
         [Display(Name = "Vardas")]
@@ -22,6 +22,13 @@ namespace LibraryProject.Models
         [Required]
         [Display(Name = "Pavardė")]
         public string LastName { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Darbuotojas")]
+        public string FullName
+        {
+            get { return FirstName + " " + LastName; }
+        }
 
         [Required]
         [Display(Name = "Asmens kodas")]

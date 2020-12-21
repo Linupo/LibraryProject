@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace LibraryProject.Models
 {
@@ -8,15 +9,18 @@ namespace LibraryProject.Models
     {
         public int BookId { get; set; }
 
-        //public int? LibraryId { get; set; }
+        public int? LibraryId { get; set; }
 
-        //public int? PublisherId { get; set; }
+        public int? PublisherId { get; set; }
 
-        //public int AuthorId { get; set; }
+        [Required]
+        public int AuthorId { get; set; }
 
-        //public int GenreId { get; set; }
+        [Required]
+        public int GenreId { get; set; }
 
-        //public int ConditionId { get; set; }
+        [Required]
+        public int ConditionId { get; set; }
 
         [Required(ErrorMessage = "Įveskite knygos pavadinimą")]
         [Display(Name = "Pavadinimas")]
@@ -64,13 +68,10 @@ namespace LibraryProject.Models
 
         public virtual Publisher Publisher { get; set; }
 
-        [Required]
         public virtual Author Author { get; set; }
 
-        [Required]
         public virtual Genre Genre { get; set; }
 
-        [Required]
         public virtual Condition Condition { get; set; }
 
         public virtual List<Reservation> Reservations { get; set; }
