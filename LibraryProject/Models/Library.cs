@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace LibraryProject.Models
 {
@@ -9,6 +10,7 @@ namespace LibraryProject.Models
         public int LibraryId { get; set; }
 
         [Required]
+        [DisplayName("Biblioteka")]
         public string Name { get; set; }
 
         [Required]

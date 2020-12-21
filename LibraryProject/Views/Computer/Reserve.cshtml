@@ -11,6 +11,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.ComputerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComputerId)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.CPU)
         </dt>
 
@@ -29,7 +37,21 @@
         <dt>
             @Html.DisplayNameFor(model => model.Monitor)
         </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monitor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Library.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Library.Name)
+        </dd>
     </dl>
+
+
 
     @using (Html.BeginForm())
     {

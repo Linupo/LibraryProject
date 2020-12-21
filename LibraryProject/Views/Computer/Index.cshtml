@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<LibraryProject.Models.Computer>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Kompiuterių sąrašas";
 }
 
-<h2>Index</h2>
+<h2>Kompiuterių sąrašas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Naujas kompiuteris", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Library.Name)
+            @Html.DisplayNameFor(model => model.ComputerId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CPU)
@@ -23,13 +23,16 @@
         <th>
             @Html.DisplayNameFor(model => model.Monitor)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Library.Name)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Library.Name)
+            @Html.DisplayFor(modelItem => item.ComputerId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CPU)
@@ -41,9 +44,12 @@
             @Html.DisplayFor(modelItem => item.Monitor)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ComputerId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ComputerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ComputerId })
+            @Html.DisplayFor(modelItem => item.Library.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Rezervuoti", "Reserve", new { id=item.ComputerId }) |
+            @Html.ActionLink("Redaguoti", "Edit", new { id=item.ComputerId }) |
+            @Html.ActionLink("Ištrinti", "Delete", new { id=item.ComputerId })
         </td>
     </tr>
 }
