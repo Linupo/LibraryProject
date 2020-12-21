@@ -7,8 +7,8 @@ namespace LibraryProject.Models
     {
         public int VacationId { get; set; }
 
-        //[Required]
-        //public int EmployeeId { get; set; }
+        [Required]
+        public int EmployeeId { get; set; }
 
         [Required]
         [Display(Name = "Pradžios data")]

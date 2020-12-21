@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using LibraryProject.Controllers
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -20,17 +22,37 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <li>@Html.ActionLink("Knygos", "Index", "Book")</li>
-                    <li>@Html.ActionLink("Kompiuteriai", "Index", "Computer")</li>
-                    <li>@Html.ActionLink("Pasiūlymai", "Index", "Offer")</li>
-                    <li>@Html.ActionLink("Darbuotojai", "Index", "Worker")</li>
-                    <li>@Html.ActionLink("Atostogų prašymai", "ViewRequestsToLeave", "Worker")</li>
-                    <li>@Html.ActionLink("Leidyklos paskyros kūrimas", "PublisherCreate", "Worker")</li>
+                    @if (Auth.GetRole() == (int)Auth.Roles.LibraryUser)
+                    {
+                        <li>@Html.ActionLink("Knygos", "Index", "Book")</li>
+                        <li>@Html.ActionLink("Kompiuteriai", "Index", "Computer")</li>
+                    }
+                    @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
+                    {
+                        <li>@Html.ActionLink("Knygos", "Index", "Book")</li>
+                        <li>@Html.ActionLink("Kompiuteriai", "Index", "Computer")</li>
+                        <li>@Html.ActionLink("Pasiūlymai", "Index", "Offer")</li>
+                        <li>@Html.ActionLink("Darbuotojai", "Index", "Worker")</li>
+                        <li>@Html.ActionLink("Atostogų prašymai", "ViewRequestsToLeave", "Worker")</li>
+                        <li>@Html.ActionLink("Leidyklos paskyros kūrimas", "PublisherCreate", "Worker")</li>
+                    }
+                    @if (Auth.GetRole() == (int)Auth.Roles.Publisher)
+                    { 
+                        <li>@Html.ActionLink("Pasiūlymai", "Index", "Offer")</li>
+                    }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Prisijungti", "Login", "Auth")</li>
-                    <li>@Html.ActionLink("Registruotis", "Register", "Auth")</li>
-                    <li>@Html.ActionLink("Profilis", "Index", "Profile")</li>
+                    @if (Auth.GetRole() == (int)Auth.Roles.NotLoggedIn)
+                    {
+                        <li>@Html.ActionLink("Prisijungti", "Login", "Auth")</li>
+                        <li>@Html.ActionLink("Registruotis", "Register", "Auth")</li>
+
+                    }
+                    @if (Auth.GetRole() != (int)Auth.Roles.NotLoggedIn)
+                    {
+                        <li>@Html.ActionLink("Atsijungti", "Logout", "Auth")</li>
+                        <li>@Html.ActionLink("Profilis", "Index", "Profile")</li>
+                    }
                 </ul>
             </div>
         </div>

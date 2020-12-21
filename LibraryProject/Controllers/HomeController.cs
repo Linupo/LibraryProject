@@ -10,6 +10,9 @@ namespace LibraryProject.Controllers
     {
         public ActionResult Index()
         {
+            var role = Auth.GetRole();
+            if (role != (int)Auth.Roles.LibraryUser && role != (int)Auth.Roles.LibraryWorker && role != (int)Auth.Roles.Publisher)
+                Auth.SetRole((int)Auth.Roles.NotLoggedIn);
             return View();
         }
     }
