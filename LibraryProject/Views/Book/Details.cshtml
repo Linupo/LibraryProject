@@ -1,13 +1,15 @@
-﻿@model LibraryProject.Models.Book
+﻿@using LibraryProject.Controllers;
+
+@model LibraryProject.Models.Book
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Title;
 }
 
 <h2>Išsami informacija apie knygą</h2>
 
 <div>
-    <h4>Book</h4>
+    <h4>@Html.DisplayFor(model => model.Title) (@Html.DisplayFor(model => model.YearWritten))</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -15,7 +17,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Author.FirstName)
+            @Html.DisplayFor(model => model.Author.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
         </dd>
 
         <dt>
@@ -48,22 +58,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Publisher.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
         </dd>
 
         <dt>
@@ -132,7 +126,43 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Modifikuoti", "Edit", new { id = Model.BookId }) |
+
+@if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
+{
+    <hr />
+    <div>
+        <h4>Paskutinių 5 naudotojų sąrašas</h4>
+        @if (Model.Reservations.Count > 0)
+        {
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Vardas</th>
+                        <th>Pavardė</th>
+                        <th>Rezervacija nuo</th>
+                        <th>Rezervacija iki</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var reservation in Model.Reservations.AsEnumerable().Reverse().Take(5))
+                    {
+                        <tr>
+                            <td>@reservation.User.FirstName</td>
+                            <td>@reservation.User.LastName</td>
+                            <td>@reservation.StartDate</td>
+                            <td>@reservation.EndDate</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p><i>Knyga nebuvo rezervuota.</i></p>
+        }
+    </div>
+}
+
+<p style="margin-top: 24px">
     @Html.ActionLink("Atgal į sąrašą", "Index")
 </p>

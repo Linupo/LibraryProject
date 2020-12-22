@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using LibraryProject.DataAccess;
 using LibraryProject.Models;
@@ -11,14 +12,77 @@ namespace LibraryProject.Controllers
     {
         private readonly LibraryDB db = new LibraryDB();
 
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            return View(db.Books.ToList());
+            ViewBag.TitleSortParam = string.IsNullOrEmpty(sortOrder) ? "title" : "title_desc";
+            ViewBag.AuthorSortParam = string.IsNullOrEmpty(sortOrder) ? "author" : "author_desc";
+            ViewBag.YearSortParam = string.IsNullOrEmpty(sortOrder) ? "year" : "year_desc";
+
+            if (sortOrder != null)
+            {
+                if (sortOrder.Contains("title"))
+                {
+                    ViewBag.TitleSortParam = sortOrder.Contains("desc") ? "title" : "title_desc";
+                    ViewBag.AuthorSortParam = null;
+                    ViewBag.YearSortParam = null;
+                }
+                else if (sortOrder.Contains("author"))
+                {
+                    ViewBag.TitleSortParam = null;
+                    ViewBag.AuthorSortParam = sortOrder.Contains("desc") ? "author" : "author_desc";
+                    ViewBag.YearSortParam = null;
+                }
+                else if (sortOrder.Contains("year"))
+                {
+                    ViewBag.TitleSortParam = null;
+                    ViewBag.AuthorSortParam = null;
+                    ViewBag.YearSortParam = sortOrder.Contains("desc") ? "year" : "year_desc";
+                }
+            }
+
+            var books = from b in db.Books select b;
+
+            switch (sortOrder)
+            {
+                case "title":
+                    books = books.OrderBy(book => book.Title);
+                    break;
+
+                case "title_desc":
+                    books = books.OrderByDescending(book => book.Title);
+                    break;
+
+                case "author":
+                    books = books.OrderBy(book => book.Author.FirstName + book.Author.LastName);
+                    break;
+
+                case "author_desc":
+                    books = books.OrderByDescending(book => book.Author.FirstName + book.Author.LastName);
+                    break;
+
+                case "year":
+                    books = books.OrderBy(book => book.YearWritten);
+                    break;
+
+                case "year_desc":
+                    books = books.OrderByDescending(book => book.YearWritten);
+                    break;
+            }
+
+            return View(books.ToList());
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View(db.Books.Find(id));
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var book = db.Books.Find(id);
+
+            if (book == null)
+                return HttpNotFound();
+
+            return View(book);
         }
 
         public ActionResult Edit(int id)
