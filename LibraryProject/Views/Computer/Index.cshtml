@@ -7,9 +7,12 @@
 
 <h2>Kompiuterių sąrašas</h2>
 
-<p>
-    @Html.ActionLink("Naujas kompiuteris", "Create")
-</p>
+@if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
+{
+    <p>
+        @Html.ActionLink("Naujas kompiuteris", "Create")
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -51,8 +54,12 @@
             <td>
                 @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
                 {
+                    <div>
                     @Html.ActionLink("Redaguoti", "Edit", new { id = item.ComputerId })
+                    </div>
+                    <div>
                     @Html.ActionLink("Ištrinti", "Delete", new { id = item.ComputerId })
+                    </div>
                 }
 
                 @if (Auth.GetRole() == (int)Auth.Roles.LibraryUser)
