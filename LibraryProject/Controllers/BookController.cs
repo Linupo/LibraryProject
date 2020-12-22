@@ -41,27 +41,57 @@ namespace LibraryProject.Controllers
 
         public ActionResult Reserve(int id)
         {
-            Reservation res = new Reservation();
-            var book = db.Books.Find(id);
-            res.Books.Add(book);
-            res.StartDate = DateTime.Now;
-            res.EndDate = DateTime.Now.AddMonths(1);
-            res.UserId = Auth.GetUserId();
-            db.Reservations.Add(res);
-            db.SaveChanges();
+            bool isCurrentlyReserved = false;
+            foreach(var reservation in db.Reservations.ToList())
+            {
+                if(reservation.StartDate<DateTime.Now && reservation.EndDate>DateTime.Now)
+                {
+                    foreach(var bookInstance in reservation.Books)
+                    {
+                        if (bookInstance.BookId == id)
+                            isCurrentlyReserved = true;
+                    }
+                }
+            }
+            if(!isCurrentlyReserved)
+            {
+                Reservation res = new Reservation();
+                var book = db.Books.Find(id);
+                res.Books.Add(book);
+                res.StartDate = DateTime.Now;
+                res.EndDate = DateTime.Now.AddMonths(1);
+                res.UserId = Auth.GetUserId();
+                db.Reservations.Add(res);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
         public ActionResult ReserveForUser(int id, int userId)
         {
-            Reservation res = new Reservation();
-            var book = db.Books.Find(id);
-            res.Books.Add(book);
-            res.StartDate = DateTime.Now;
-            res.EndDate = DateTime.Now.AddMonths(1);
-            res.UserId = userId;
-            db.Reservations.Add(res);
-            db.SaveChanges();
+            bool isCurrentlyReserved = false;
+            foreach (var reservation in db.Reservations.ToList())
+            {
+                if (reservation.StartDate < DateTime.Now && reservation.EndDate > DateTime.Now)
+                {
+                    foreach (var bookInstance in reservation.Books)
+                    {
+                        if (bookInstance.BookId == id)
+                            isCurrentlyReserved = true;
+                    }
+                }
+            }
+            if (!isCurrentlyReserved)
+            {
+                Reservation res = new Reservation();
+                var book = db.Books.Find(id);
+                res.Books.Add(book);
+                res.StartDate = DateTime.Now;
+                res.EndDate = DateTime.Now.AddMonths(1);
+                res.UserId = userId;
+                db.Reservations.Add(res);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
