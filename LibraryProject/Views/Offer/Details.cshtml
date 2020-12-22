@@ -1,45 +1,36 @@
 ﻿@model LibraryProject.Models.Offer
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Pasiūlymas";
 }
 
-<h2>Details</h2>
+<h2>Pasiūlymas</h2>
 
 <div>
-    <h4>Offer</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.StatusId)
+            Leidykla
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StatusId)
+            @Html.DisplayFor(model => model.Publisher.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LibraryId)
+            Knygos pavadinimas
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LibraryId)
+            @Html.DisplayFor(model => model.Book.Title)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PublisherId)
+            Knygos aprašymas
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PublisherId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BookId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BookId)
+            @Html.DisplayFor(model => model.Book.Description)
         </dd>
 
         <dt>
@@ -77,6 +68,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.OfferId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Redaguoti", "Edit", new { id = Model.OfferId }) |
+    @Html.ActionLink("Grįžti į sąrašą", "Index")
 </p>

@@ -27,6 +27,10 @@
         {
             <th></th>
         }
+        @if (Auth.GetRole() == (int)Auth.Roles.LibraryUser)
+        {
+            <th></th>
+        }
     </tr>
 
     @foreach (var item in Model)
@@ -41,8 +45,22 @@
             <td>@Html.DisplayFor(modelItem => item.Language)</td>
             @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
             {
-                <td>@Html.ActionLink("Ištrinti", "Delete", new { id = item.BookId })</td>
+                <td>
+                  <form method="POST">
+                    <div class="form-group">
+                      <label for="UserId">Naudotojo Id</label>
+                      <input type="number" class="form-control" id="UserId" name="UserId" placeholder="id">
+                    </div>
+                    @Html.ActionLink("Išduoti", "ReserveForUser", new { id = item.BookId, userId = 1 })
+                  </form>
+                  <span>|</span>
+                  @Html.ActionLink("Ištrinti", "Delete", new { id = item.BookId })
+                </td>
             }
+            @if (Auth.GetRole() == (int)Auth.Roles.LibraryUser)
+            {
+                <td>@Html.ActionLink("Rezervuoti", "Reserve", new { id = item.BookId })</td>
+             }
         </tr>
     }
 </table>

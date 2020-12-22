@@ -37,8 +37,9 @@
                         <li>@Html.ActionLink("Leidyklos paskyros kūrimas", "PublisherCreate", "Worker")</li>
                     }
                     @if (Auth.GetRole() == (int)Auth.Roles.Publisher)
-                    { 
+                    {
                         <li>@Html.ActionLink("Pasiūlymai", "Index", "Offer")</li>
+                        <li>@Html.ActionLink("Knygos", "Index", "Book")</li>
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

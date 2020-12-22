@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<LibraryProject.Models.Computer>
+@using LibraryProject.Controllers
 
 @{
     ViewBag.Title = "Kompiuterių sąrašas";
@@ -6,9 +7,12 @@
 
 <h2>Kompiuterių sąrašas</h2>
 
-<p>
-    @Html.ActionLink("Naujas kompiuteris", "Create")
-</p>
+@if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
+{
+    <p>
+        @Html.ActionLink("Naujas kompiuteris", "Create")
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -29,29 +33,41 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ComputerId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CPU)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GPU)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Monitor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Library.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Rezervuoti", "Reserve", new { id=item.ComputerId }) |
-            @Html.ActionLink("Redaguoti", "Edit", new { id=item.ComputerId }) |
-            @Html.ActionLink("Ištrinti", "Delete", new { id=item.ComputerId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComputerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GPU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monitor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Library.Name)
+            </td>
+            <td>
+                @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
+                {
+                    <div>
+                    @Html.ActionLink("Redaguoti", "Edit", new { id = item.ComputerId })
+                    </div>
+                    <div>
+                    @Html.ActionLink("Ištrinti", "Delete", new { id = item.ComputerId })
+                    </div>
+                }
+
+                @if (Auth.GetRole() == (int)Auth.Roles.LibraryUser)
+                {
+                    @Html.ActionLink("Rezervuoti", "Reserve", new { id = item.ComputerId })
+                }
+            </td>
+        </tr>
+    }
 
 </table>

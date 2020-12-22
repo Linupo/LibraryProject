@@ -1,33 +1,38 @@
-﻿@model IEnumerable<LibraryProject.Models.Offer>
+﻿@using LibraryProject.Controllers
+
+@model IEnumerable<LibraryProject.Models.Offer>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Pasiūlymų sąrašas";
 }
 
-<h2>Index</h2>
+<h2>Pasiūlymų sąrašas</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (Auth.GetRole() == (int)Auth.Roles.Publisher)
+{
+    <p>
+        @Html.ActionLink("Sukurti naują pasiulymą", "Create")
+    </p>
+}
 <table class="table">
     <tr>
+        @if (Auth.GetRole() != (int)Auth.Roles.Publisher)
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </th>
+        }
         <th>
-            @Html.DisplayNameFor(model => model.StatusId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LibraryId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PublisherId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BookId)
+            @Html.DisplayNameFor(model => model.Book)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.StartDate)
@@ -38,38 +43,46 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StatusId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LibraryId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PublisherId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BookId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OfferId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OfferId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OfferId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if (Auth.GetRole() != (int)Auth.Roles.Publisher)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publisher.Name)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Book.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @if (Auth.GetRole() != (int)Auth.Roles.Publisher)
+                {
+                    @Html.ActionLink("Patvirtinti | ", "Accept", new { id = item.OfferId }, new { onclick = "return confirm('Ar tikrai norite patvirtinti šį pasiūlymą?')" })
+                }
+                @if (Auth.GetRole() == (int)Auth.Roles.Publisher)
+                {
+                    @Html.ActionLink("Redaguoti | ", "Edit", new { id = item.OfferId })
+                    @Html.ActionLink("Ištrinti | ", "Delete", new { id = item.OfferId }, new { onclick = "return confirm('Ar tikrai norite ištrinti šį pasiūlymą?')" })
+                }
+                @Html.ActionLink("Detaliau", "Details", new { id = item.OfferId })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using LibraryProject.DataAccess;
 using LibraryProject.Models;
@@ -11,7 +13,22 @@ namespace LibraryProject.Controllers
         // GET: Index
         public ActionResult Index()
         {
-            return View(db.Computers.ToList());
+            var reservations = db.Reservations.ToList();
+            var reservedIds = new List<int>();
+            foreach (var reservation in reservations)
+            {
+                foreach (var computer in reservation.Computers)
+                {
+                    reservedIds.Add(computer.ComputerId);
+                }
+            }
+            var filteredComputers = new List<Computer>();
+            foreach (var computer in db.Computers.ToList())
+            {
+                if (!reservedIds.Contains(computer.ComputerId))
+                    filteredComputers.Add(computer);
+            }
+            return View(filteredComputers);
         }
 
         // GET: Reserve
@@ -25,15 +42,16 @@ namespace LibraryProject.Controllers
         // POST: Reserve
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Reserve(Computer computer)
+        public ActionResult Reserve(int id, string d)
         {
-            if (ModelState.IsValid)
-            {
-                var old = db.Computers.Find(computer.ComputerId);
-                db.Entry(old).CurrentValues.SetValues(computer);
-                db.SaveChanges();
-            }
-            PopulateData(computer);
+            Reservation res = new Reservation();
+            var computer = db.Computers.Find(id);
+            res.Computers.Add(computer);
+            res.StartDate = DateTime.Now;
+            res.EndDate = DateTime.Now.AddDays(1);
+            res.UserId = Auth.GetUserId();
+            db.Reservations.Add(res);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -100,7 +118,6 @@ namespace LibraryProject.Controllers
             PopulateData(computer);
             return View();
         }
-
         private void PopulateData(object selectedBook = null)
         {
             var libraryQuery = from l in db.Libraries select l;
