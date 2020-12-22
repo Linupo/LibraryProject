@@ -62,65 +62,83 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Condition.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Library.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Publisher.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YearWritten)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Language)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ISBN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PageCount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MinAge)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
-                {
-                    @Html.ActionLink("Detaliau", "Details", new { id = item.BookId }) 
-                    @Html.ActionLink("Modifikuoti", "Edit", new { id = item.BookId }) 
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Condition.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Library.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Publisher.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearWritten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Language)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISBN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReleaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PageCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MinAge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
+            {
+                <div>
+                    @Html.ActionLink("Detaliau", "Details", new { id = item.BookId })
+                </div>
+                <div>
                     @Html.ActionLink("Ištrinti", "Delete", new { id = item.BookId })
+                </div>
+            }
 
-                }
-
-                @if (Auth.GetRole() == (int)Auth.Roles.LibraryUser)
-                {
-                    @Html.ActionLink("Detaliau", "Details", new { id = item.BookId }) 
+            @if (Auth.GetRole() == (int)Auth.Roles.LibraryUser)
+            {
+                <div>
+                    @Html.ActionLink("Detaliau", "Details", new { id = item.BookId })
+                </div>
+                <div>
                     @Html.ActionLink("Rezervuoti", "Reserve", new { id = item.BookId })
-                }
+                </div>
+             }
             </td>
-        </tr>
+        @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
+        {
+        <td>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="UserId">naudotojo id</label>
+                    <input type="number" class="form-control" id="UserId" name="UserId" placeholder="id">
+                </div>
+                @Html.ActionLink("Išduoti", "ReserveForUser", new { id = item.BookId, userId = 1 })
+            </form>
+        </td>
+        }
+    </tr>
     }
 
 </table>
