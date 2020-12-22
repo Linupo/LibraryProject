@@ -136,6 +136,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\VacationController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\ComputerController.cs" />
@@ -234,6 +235,7 @@
     <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Views\Book\Create.cshtml" />
     <Content Include="Views\Book\FreeBooks.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

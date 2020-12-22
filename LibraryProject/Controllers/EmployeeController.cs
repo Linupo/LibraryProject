@@ -1,32 +1,77 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using LibraryProject.DataAccess;
+using LibraryProject.Models;
 
 namespace LibraryProject.Controllers
 {
     public class EmployeeController : Controller
     {
-        public ActionResult Delete()
+        private readonly LibraryDB db = new LibraryDB();
+
+        public ActionResult Delete(int id)
         {
-            return View();
+            var toBeRemoved = db.Employees.Find(id);
+            db.Employees.Remove(toBeRemoved);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        public ActionResult Details()
+        public ActionResult Details(int id)
         {
-            return View();
+            return View(db.Employees.Find(id));
         }
 
-        public ActionResult Edit()
+        // GET: Edit
+        public ActionResult Edit(int id)
         {
-            return View();
+            Employee employee = db.Employees.Find(id);
+            PopulateData(employee);
+            return View(employee);
         }
 
+        // POST: Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                var old = db.Employees.Find(employee.EmployeeId);
+                db.Entry(old).CurrentValues.SetValues(employee);
+                db.SaveChanges();
+            }
+            PopulateData(employee);
+            return RedirectToAction("Index");
+        }
+
+        // GET: Create
         public ActionResult Create()
         {
+            PopulateData();
+            return View();
+        }
+
+        // POST: Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Employees.Add(employee);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            PopulateData(employee);
             return View();
         }
 
         public ActionResult Index()
         {
-            return View();
+            return View(db.Employees.ToList());
         }
 
 
@@ -51,5 +96,12 @@ namespace LibraryProject.Controllers
         {
             return View();
         }
+
+        private void PopulateData(object selectedBook = null)
+        {
+            var libraryQuery = from l in db.Libraries select l;
+            ViewBag.LibraryId = new SelectList(libraryQuery, "LibraryId", "Name", selectedBook);
+        }
+
     }
 }
