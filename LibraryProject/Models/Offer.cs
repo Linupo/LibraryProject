@@ -44,8 +44,10 @@ namespace LibraryProject.Models
 
         public virtual Library Library { get; set; }
 
+        [Display(Name = "Leidykla")]
         public virtual Publisher Publisher { get; set; }
 
+        [Display(Name = "Knyga")]
         public virtual Book Book { get; set; }
     }
 }
