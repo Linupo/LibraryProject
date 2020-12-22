@@ -7,7 +7,7 @@
 <h1>Pagrindinis bibliotekos puslapis</h1>
 
 <div class="row">
-    @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker || Auth.GetRole() == (int)Auth.Roles.LibraryUser)
+    @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker || Auth.GetRole() == (int)Auth.Roles.LibraryUser || Auth.GetRole() == (int)Auth.Roles.Publisher)
     {
         <div class="col-md-4">
             <h2>Knygos</h2>
@@ -33,6 +33,14 @@
     {
         <div class="col-md-4">
             <h2>Leidyklų pasiūlymai</h2>
+            <p>Peržiūrėkite leidyklų siūlomas knygas, patvirtinkite ar atšaukite užsakymus (darbuotojams).</p>
+            <p><a class="btn btn-default" href="@Url.Action("Index", "Offer")">Pasiūlymų sąrašas &raquo;</a></p>
+        </div>
+    }
+    @if (Auth.GetRole() == (int)Auth.Roles.Publisher)
+    {
+        <div class="col-md-4">
+            <h2>Ppasiūlymai</h2>
             <p>Peržiūrėkite leidyklų siūlomas knygas, patvirtinkite ar atšaukite užsakymus (darbuotojams).</p>
             <p><a class="btn btn-default" href="@Url.Action("Index", "Offer")">Pasiūlymų sąrašas &raquo;</a></p>
         </div>

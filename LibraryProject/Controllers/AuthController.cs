@@ -50,6 +50,7 @@ namespace LibraryProject.Controllers
             {
                 if (user.Email == email && user.Password == password)
                 {
+                    Auth.SetUserId(user.PublisherId);
                     Auth.SetRole((int)Auth.Roles.Publisher);
                     break;
                 }
