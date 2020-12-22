@@ -52,6 +52,19 @@ namespace LibraryProject.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ReserveForUser(int id, int userId)
+        {
+            Reservation res = new Reservation();
+            var book = db.Books.Find(id);
+            res.Books.Add(book);
+            res.StartDate = DateTime.Now;
+            res.EndDate = DateTime.Now.AddMonths(1);
+            res.UserId = userId;
+            db.Reservations.Add(res);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Delete(int id)
         {
             var toBeRemoved = db.Books.Find(id);

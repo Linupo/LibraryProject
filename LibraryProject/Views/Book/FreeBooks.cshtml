@@ -7,9 +7,6 @@
 
 <h2>Laisvos knygos</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -105,16 +102,26 @@
             <td>
                 @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
                 {
-                    @Html.ActionLink("Detaliau", "Details", new { id = item.BookId }) 
-                    @Html.ActionLink("Modifikuoti", "Edit", new { id = item.BookId }) 
-                    @Html.ActionLink("Ištrinti", "Delete", new { id = item.BookId })
+                    <div>
+                        @Html.ActionLink("Detaliau", "Details", new { id = item.BookId })
+                    </div>
+                    <div>
+                        @Html.ActionLink("Modifikuoti", "Edit", new { id = item.BookId })
+                    </div>
+                    <div>
+                        @Html.ActionLink("Ištrinti", "Delete", new { id = item.BookId })
+                    </div>
 
                 }
 
                 @if (Auth.GetRole() == (int)Auth.Roles.LibraryUser)
                 {
-                    @Html.ActionLink("Detaliau", "Details", new { id = item.BookId }) 
-                    @Html.ActionLink("Rezervuoti", "Reserve", new { id = item.BookId })
+                    <div>
+                        @Html.ActionLink("Detaliau", "Details", new { id = item.BookId })
+                    </div>
+                    <div>
+                        @Html.ActionLink("Rezervuoti", "Reserve", new { id = item.BookId })
+                    </div>
                 }
             </td>
         </tr>
