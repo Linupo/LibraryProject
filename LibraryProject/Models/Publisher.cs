@@ -7,7 +7,7 @@ namespace LibraryProject.Models
         public int PublisherId { get; set; }
 
         [Required(ErrorMessage = "Įveskite leidyklos pavadinimą")]
-        [Display(Name = "Pavadinimas")]
+        [Display(Name = "Leidykla")]
         public string Name { get; set; }
 
         [Required]
