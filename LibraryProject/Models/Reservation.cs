@@ -25,6 +25,12 @@ namespace LibraryProject.Models
 
         public virtual List<Book> Books { get; set; }
 
-        public virtual List<Book> Computers { get; set; }
+        public virtual List<Computer> Computers { get; set; }
+
+        public Reservation()
+        {
+            Books = new List<Book>();
+            Computers = new List<Computer>();
+        }
     }
 }

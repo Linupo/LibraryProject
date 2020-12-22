@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<LibraryProject.Models.Book>
+@using LibraryProject.Controllers
 
 @{
     ViewBag.Title = "FreeBooks";
@@ -102,9 +103,19 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.ActionLink("Modifikuoti", "Edit", new { id = item.BookId }) |
-                @Html.ActionLink("Detaliau", "Details", new { id = item.BookId }) |
-                @Html.ActionLink("Ištrinti", "Delete", new { id = item.BookId })
+                @if (Auth.GetRole() == (int)Auth.Roles.LibraryWorker)
+                {
+                    @Html.ActionLink("Detaliau", "Details", new { id = item.BookId }) 
+                    @Html.ActionLink("Modifikuoti", "Edit", new { id = item.BookId }) 
+                    @Html.ActionLink("Ištrinti", "Delete", new { id = item.BookId })
+
+                }
+
+                @if (Auth.GetRole() == (int)Auth.Roles.LibraryUser)
+                {
+                    @Html.ActionLink("Detaliau", "Details", new { id = item.BookId }) 
+                    @Html.ActionLink("Rezervuoti", "Reserve", new { id = item.BookId })
+                }
             </td>
         </tr>
     }
