@@ -130,10 +130,11 @@ namespace LibraryProject.Controllers
             var reservedIds = new List<int>();
             foreach (var reservation in reservations)
             {
-                foreach (var book in reservation.Books)
-                {
-                    reservedIds.Add(book.BookId);
-                }
+                if(reservation.StartDate<DateTime.Now && reservation.EndDate>DateTime.Now)
+                    foreach (var book in reservation.Books)
+                    {
+                        reservedIds.Add(book.BookId);
+                    }
             }
             var filteredBooks = new List<Book>();
             foreach (var book in db.Books.ToList())
