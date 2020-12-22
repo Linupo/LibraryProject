@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using LibraryProject.DataAccess;
@@ -35,6 +36,19 @@ namespace LibraryProject.Controllers
                 db.Entry(old).CurrentValues.SetValues(book);
                 db.SaveChanges();
             }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Reserve(int id)
+        {
+            Reservation res = new Reservation();
+            var book = db.Books.Find(id);
+            res.Books.Add(book);
+            res.StartDate = DateTime.Now;
+            res.EndDate = DateTime.Now.AddMonths(1);
+            res.UserId = Auth.GetUserId();
+            db.Reservations.Add(res);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

@@ -20,6 +20,7 @@ namespace LibraryProject.Controllers
         public ActionResult Logout()
         {
             Auth.SetRole((int)Auth.Roles.NotLoggedIn);
+            Auth.SetUserId(0);
             return RedirectToAction("Login");
         }
 
@@ -30,6 +31,7 @@ namespace LibraryProject.Controllers
             {
                 if(user.Email == email && user.Password == password)
                 {
+                    Auth.SetUserId(user.UserId);
                     Auth.SetRole((int)Auth.Roles.LibraryUser);
                     break;
                 }
@@ -87,6 +89,17 @@ namespace LibraryProject.Controllers
         //  SetRole(1)
         //Skaičius 1 paimtas kaip pavyzdys, gali būti naudojami ir kiti skaičiai kurie yra enum'e Roles
 
+
+        public static void SetUserId(int id)
+        {
+            HttpContext.Current.Session["LoggedUserId"] = id;
+        }
+
+        public static int GetUserId()
+        {
+            object value = HttpContext.Current.Session["LoggedUserId"];
+            return Convert.ToInt32(value);
+        }
 
         public static int GetRole()
         {
